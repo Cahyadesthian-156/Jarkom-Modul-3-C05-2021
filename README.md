@@ -232,6 +232,7 @@ echo 'zone "jualbelikapal.c05.com" {
 ```
 Buat directory kaizoku dengan command 'mkdir /etc/bind/kaizoku'
 Edit file
+```
 echo -e '
 $TTL     604800
 @          IN          SOA      jualbelikapal.c05.com. root.jualbelikapal.c05.com. (
