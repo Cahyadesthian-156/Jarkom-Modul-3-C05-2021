@@ -314,3 +314,18 @@ http_access allow USERS
 '>/etc/squid/squid.conf
 ```
 Lalu restart squid dengan perintah `service squid restart`
+
+**Longuetown**
+
+Kemudian `lynx http://google.com`
+
+## 11
+**EniesLobby**
+Buat domain super.franky.C05.com pada file `/etc/bind/named.conf.local`
+```
+zone "super.franky.C05.com" {
+        type master;
+        allow-transfer { 192.186.3.69; };
+        file "/etc/bind/kaizoku/super.franky.C05.com";
+};
+```
