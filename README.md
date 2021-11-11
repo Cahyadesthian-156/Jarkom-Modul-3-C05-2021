@@ -181,8 +181,11 @@ forwarders {
 };
 ```
 Lalu comment pada bagian `// dnssec-validation auto;` dan tambahkan `allow-query{any;};`
+
 Setelah itu lakukan restart bind9 dengan perintah `service bind9 restart`
+
 **Longutown, Alabasta TottoLand dan Skypie**
+
 Edit file `/etc/network/interfaces` dengan comment atau hapus konfigurasi yang lama (konfigurasi IP statis) dan tambahkan:
 ```
 auto eth0
@@ -194,4 +197,5 @@ Edit file `/etc/network/interfaces` dengan menambahkan
 hwaddress ether 56:c5:59:f7:95:d0; #'hwaddress_milik_Skypie'
 ```
 Kemudian restart semua client `(Longutown, Alabasta TottoLand dan Skypie)` pada GNS3
+
 Lalu periksa semua client dengan mengetikkan command `ip a`
