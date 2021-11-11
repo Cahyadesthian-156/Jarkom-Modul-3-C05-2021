@@ -202,3 +202,33 @@ Lalu periksa semua client dengan mengetikkan command `ip a`
 
 ## 8
 **Water7**
+
+Mengetikan command pada .bashrc sebagai berikut
+```
+echo 'nameserver 192.168.122.1' >  /etc/resolv.conf
+apt-get update
+apt-get install squid -y
+apt-get install apache2-utils -y
+```
+Backup file konfigurasi default yang disediakan Squid dengan perintah
+```
+mv /etc/squid/squid.conf /etc/squid/squid.conf.bak
+```
+Kemudian buat konfigurasi Squid baru dengan file `/etc/squid/squid.conf` dan tambahkan:
+```
+http_port 5000
+visible_hostname jualbelikapal.c05.com
+```
+Kemudian restart squid dengan perintah `service squid restart`
+**Longutown**
+Instalasi beberapa paket pada file script.sh dengan petintah
+```
+apt-get update
+apt-get install lynx -y
+apt-get install install speedtest-cli -y
+```
+Kemudian aktifkan konfigurasi proxynya dengan perintah
+```
+export http_proxy="http://192.186.2.3:5000"
+```
+Kemudian `lynx google.com`
