@@ -250,5 +250,4 @@ acl USERS proxy_auth REQUIRED
 http_access allow USERS
 ```
 **Longuetown**
-export http_proxy="http://192.186.2.3:5000"
 Kemudian `lynx http://google.com`
