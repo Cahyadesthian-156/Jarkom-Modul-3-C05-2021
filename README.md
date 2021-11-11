@@ -92,7 +92,7 @@ iface eth0 inet static
 	gateway 192.186.3.1
 ```
 
-## Semua client yang ada HARUS menggunakan konfigurasi IP dari DHCP Server.
+## 1
 ### JAWAB
 **Foosha**
 
@@ -105,7 +105,7 @@ echo nameserver 192.168.122.1 > /etc/resolv.conf
 apt-get update
 apt-get install isc-dhcp-relay -y
 ```
-Kemudian edit file `/etc/default/isc-dhcp-relay` dengam perimtah:
+Kemudian edit file `/etc/default/isc-dhcp-relay` dengan perimtah:
 ```
 echo ‘# What servers should the DHCP relay forward requests to?
 SERVERS="192.186.2.4"
@@ -119,5 +119,19 @@ OPTIONS="" ‘> /etc/default/isc-dhcp-relay
 Selanjutnya  edit file `/etc/sysctl.conf` dengan command:
 ```echo 'net.ipv4.ip_forward=1'>/etc/sysctl.conf```
 
-Lalu restart dhcp relaynya dengan commmand 
+Lalu restart dhcp relaynya dengan perintah
 ```service isc-dhcp-relay restart```
+## 2-6
+**Jipangu**
+
+Mengetikan command pada .bashrc sebagai berikut
+```
+echo 'nameserver 192.168.122.1' >  /etc/resolv.conf
+apt-get update
+apt-get install isc-dhcp-server -y
+```
+Edit file `/etc/default/isc-dhcp-server` dengan perintah:
+```
+echo INTERFACES="eth0"
+```
+Edit file  `/etc/dhcp/dhcpd.conf` dengan perintah
