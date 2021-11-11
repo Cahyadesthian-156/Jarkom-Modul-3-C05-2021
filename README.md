@@ -199,3 +199,6 @@ hwaddress ether 56:c5:59:f7:95:d0; #'hwaddress_milik_Skypie'
 Kemudian restart semua client `(Longutown, Alabasta TottoLand dan Skypie)` pada GNS3
 
 Lalu periksa semua client dengan mengetikkan command `ip a`
+
+## 8
+**Water7**
