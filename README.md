@@ -218,6 +218,7 @@ Kemudian buat konfigurasi Squid baru dengan file `/etc/squid/squid.conf` dan tam
 ```
 http_port 5000
 visible_hostname jualbelikapal.c05.com
+http_access allow all
 ```
 Kemudian restart squid dengan perintah `service squid restart`
 **Longutown**
@@ -231,4 +232,23 @@ Kemudian aktifkan konfigurasi proxynya dengan perintah
 ```
 export http_proxy="http://192.186.2.3:5000"
 ```
-Kemudian `lynx google.com`
+Kemudian `lynx http://google.com`
+## 9
+Buat username `luffybelikapalc05` dengan password `luffy_c05` dan username `zorobelikapalc05` dengan password `zoro_c05` dengan enkripsi MD5
+```
+htpasswd -c -m /etc/squid/passwd luffybelikapalc05
+htpasswd -m /etc/squid/passwd zorobelikapalc05
+```
+Edit file pada `/etc/squid/squid.conf` dengan menambahkan perintah:
+```
+auth_param basic program /usr/lib/squid/basic_ncsa_auth /etc/squid/passwd
+auth_param basic children 5
+auth_param basic realm Proxy
+auth_param basic credentialsttl 2 hours
+auth_param basic casesensitive on
+acl USERS proxy_auth REQUIRED
+http_access allow USERS
+```
+**Longuetown**
+export http_proxy="http://192.186.2.3:5000"
+Kemudian `lynx http://google.com`
