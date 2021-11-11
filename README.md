@@ -118,5 +118,6 @@ OPTIONS="" ‘> /etc/default/isc-dhcp-relay
 ```
 Selanjutnya  edit file `/etc/sysctl.conf` dengan command:
 ```echo 'net.ipv4.ip_forward=1'>/etc/sysctl.conf```
+
 Lalu restart dhcp relaynya dengan commmand 
 ```service isc-dhcp-relay restart```
