@@ -121,7 +121,7 @@ Selanjutnya  edit file `/etc/sysctl.conf` dengan command:
 
 Lalu restart dhcp relaynya dengan perintah
 ```service isc-dhcp-relay restart```
-## 2-6
+## 2-7
 **Jipangu**
 
 Mengetikan command pada .bashrc sebagai berikut
@@ -158,7 +158,7 @@ subnet 192.186.3.0 netmask 255.255.255.0 {
 	default-lease-time 720;
 	max-lease-time 7200;
 }
-#nomer 6
+#nomer 7
 host Skypie {
     hardware ethernet 56:c5:59:f7:95:d0; #'hwaddress_milik_Skypie'
     fixed-address 192.186.3.69;
