@@ -132,6 +132,74 @@ apt-get install isc-dhcp-server -y
 ```
 Edit file `/etc/default/isc-dhcp-server` dengan perintah:
 ```
-echo INTERFACES="eth0"
+echo `INTERFACES="eth0"`> /etc/default/isc-dhcp-server
 ```
 Edit file  `/etc/dhcp/dhcpd.conf` dengan perintah
+```
+echo '
+subnet 192.186.2.0 netmask 255.255.255.0 {
+}
+
+subnet 192.186.1.0 netmask 255.255.255.0 {
+	range 192.186.1.20 192.186.1.99;
+	range 192.186.1.150 192.186.1.169;
+	option routers 192.186.1.1;
+	option broadcast-address 192.186.1.255;
+	option domain-name-servers 192.186.2.4, 192.168.122.1;
+	default-lease-time 360;
+	max-lease-time 7200;
+}
+
+subnet 192.186.3.0 netmask 255.255.255.0 {
+	range 192.186.3.30 192.186.3.50;
+	option routers 192.186.3.1;
+	option broadcast-address 192.186.3.255;
+	option domain-name-servers 192.186.2.4;
+	default-lease-time 720;
+	max-lease-time 7200;
+}
+#nomer 6
+host Skypie {
+    hardware ethernet 56:c5:59:f7:95:d0;
+    fixed-address 192.186.3.69;
+}' > /etc/dhcp/dhcpd.conf
+```
+Kemudian restart dhcp server dengan perintah: `service isc-dhcp-server restart`
+
+**EinesLobby**
+
+Mengetikan command pada .bashrc sebagai berikut
+```
+echo ‘nameserver 192.168.122.1’ > /etc/resolv.conf
+apt-get update 
+apt-get install bind9 -y
+```
+```
+echo '
+options {
+    	directory "/var/cache/bind";
+
+    	// If there is a firewall between you and nameservers you want
+    	// to talk to, you may need to fix the firewall to allow multiple
+    	// ports to talk.  See http://www.kb.cert.org/vuls/id/800113
+
+    	// If your ISP provided one or more IP addresses for stable
+    	// nameservers, you probably want to use them as forwarders.
+    	// Uncomment the following block, and insert the addresses replacing
+    	// the all-0's placeholder.
+
+    	forwarders {
+            	192.168.122.1;
+    	};
+
+    	//========================================================================
+    	// If BIND logs error messages about the root key being expired,
+    	// you will need to update your keys.  See https://www.isc.org/bind-keys
+    	//========================================================================
+    	//dnssec-validation auto;
+    	allow-query{any;};
+    	auth-nxdomain no;	# conform to RFC1035
+    	listen-on-v6 { any; };
+};' > /etc/bind/named.conf.options
+```
+Setelah itu lakukan restart bind9 dengan perintah `service bind9 restart`
