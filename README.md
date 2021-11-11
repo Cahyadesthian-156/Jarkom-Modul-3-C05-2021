@@ -250,4 +250,6 @@ acl USERS proxy_auth REQUIRED
 http_access allow USERS
 ```
 **Longuetown**
+
 Kemudian `lynx http://google.com`
+##10
