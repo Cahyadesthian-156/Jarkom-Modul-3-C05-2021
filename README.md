@@ -268,7 +268,8 @@ htpasswd -c -m /etc/squid/passwd luffybelikapalc05
 htpasswd -m /etc/squid/passwd zorobelikapalc05
 ```
 **Keterangan:**
--c : Buat new passwdfile. Jika passwdfile sudah ada maka akan password baru.
+
+-c : Buat new passwdfile. Jika passwdfile sudah ada maka akan membuat file password baru.
 
 -m : Menggunakan enkripsi MD5 untuk password.
 
