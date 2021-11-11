@@ -239,7 +239,7 @@ Buat username `luffybelikapalc05` dengan password `luffy_c05` dan username `zoro
 htpasswd -c -m /etc/squid/passwd luffybelikapalc05
 htpasswd -m /etc/squid/passwd zorobelikapalc05
 ```
-Edit file pada `/etc/squid/squid.conf` dengan menambahkan perintah:
+Edit file pada `/etc/squid/squid.conf` menjadi:
 ```
 http_port 5000
 visible_hostname jualbelikapal.c05.com
@@ -255,4 +255,4 @@ http_access allow USERS
 
 Kemudian `lynx http://google.com`
 
-##10
+## 10
