@@ -107,14 +107,14 @@ apt-get install isc-dhcp-relay -y
 ```
 Kemudian edit file `/etc/default/isc-dhcp-relay` dengan perimtah:
 ```
-echo ‘# What servers should the DHCP relay forward requests to?
+echo '# What servers should the DHCP relay forward requests to?
 SERVERS="192.186.2.4"
 
 # On what interfaces should the DHCP relay (dhrelay) serve DHCP requests?
 INTERFACES="eth1 eth2 eth3"
 
 # Additional options that are passed to the DHCP relay daemon?
-OPTIONS="" ‘> /etc/default/isc-dhcp-relay
+OPTIONS="" '> /etc/default/isc-dhcp-relay
 ```
 Selanjutnya  edit file `/etc/sysctl.conf` dengan command:
 ```echo 'net.ipv4.ip_forward=1'>/etc/sysctl.conf```
@@ -132,7 +132,7 @@ apt-get install isc-dhcp-server -y
 ```
 Edit file `/etc/default/isc-dhcp-server` dengan perintah:
 ```
-echo `INTERFACES="eth0"`> /etc/default/isc-dhcp-server
+echo 'INTERFACES="eth0"'> /etc/default/isc-dhcp-server
 ```
 Edit file  `/etc/dhcp/dhcpd.conf` dengan perintah
 ```
@@ -160,7 +160,7 @@ subnet 192.186.3.0 netmask 255.255.255.0 {
 }
 #nomer 6
 host Skypie {
-    hardware ethernet 56:c5:59:f7:95:d0;
+    hardware ethernet 56:c5:59:f7:95:d0; #'hwaddress_milik_Skypie'
     fixed-address 192.186.3.69;
 }' > /etc/dhcp/dhcpd.conf
 ```
@@ -170,36 +170,28 @@ Kemudian restart dhcp server dengan perintah: `service isc-dhcp-server restart`
 
 Mengetikan command pada .bashrc sebagai berikut
 ```
-echo ‘nameserver 192.168.122.1’ > /etc/resolv.conf
+echo 'nameserver 192.168.122.1' > /etc/resolv.conf
 apt-get update 
 apt-get install bind9 -y
 ```
+Edit file `/etc/bind/named.conf.options` dan uncomment pada bagian forwarders seperti berikut
 ```
-echo '
-options {
-    	directory "/var/cache/bind";
-
-    	// If there is a firewall between you and nameservers you want
-    	// to talk to, you may need to fix the firewall to allow multiple
-    	// ports to talk.  See http://www.kb.cert.org/vuls/id/800113
-
-    	// If your ISP provided one or more IP addresses for stable
-    	// nameservers, you probably want to use them as forwarders.
-    	// Uncomment the following block, and insert the addresses replacing
-    	// the all-0's placeholder.
-
-    	forwarders {
-            	192.168.122.1;
-    	};
-
-    	//========================================================================
-    	// If BIND logs error messages about the root key being expired,
-    	// you will need to update your keys.  See https://www.isc.org/bind-keys
-    	//========================================================================
-    	//dnssec-validation auto;
-    	allow-query{any;};
-    	auth-nxdomain no;	# conform to RFC1035
-    	listen-on-v6 { any; };
-};' > /etc/bind/named.conf.options
+forwarders {
+	192.168.122.1;
+};
 ```
+Lalu comment pada bagian `// dnssec-validation auto;` dan tambahkan `allow-query{any;};`
 Setelah itu lakukan restart bind9 dengan perintah `service bind9 restart`
+**Longutown, Alabasta TottoLand dan Skypie**
+Edit file `/etc/network/interfaces` dengan comment atau hapus konfigurasi yang lama (konfigurasi IP statis) dan tambahkan:
+```
+auto eth0
+iface eth0 inet dhcp
+```
+**Skypie**
+Edit file `/etc/network/interfaces` dengan menambahkan
+```
+hwaddress ether 56:c5:59:f7:95:d0; #'hwaddress_milik_Skypie'
+```
+Kemudian restart semua client `(Longutown, Alabasta TottoLand dan Skypie)` pada GNS3
+Lalu periksa semua client dengan mengetikkan command `ip a`
