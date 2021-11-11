@@ -221,6 +221,31 @@ visible_hostname jualbelikapal.c05.com
 http_access allow all
 ```
 Kemudian restart squid dengan perintah `service squid restart`
+**EinesLobby**
+Buat zone jualbelikapal.c05.com pada '/etc/bind/named.conf.local`
+```
+echo 'zone "jualbelikapal.c05.com" {
+        type master;
+        allow-transfer { 192.186.2.3; };
+        file "/etc/bind/kaizoku/jualbelikapal.c05.com";
+}; '> /etc/bind/named.conf.local
+```
+Buat directory kaizoku dengan command 'mkdir /etc/bind/kaizoku'
+Edit file
+echo -e '
+$TTL     604800
+@          IN          SOA      jualbelikapal.c05.com. root.jualbelikapal.c05.com. (
+                                2021102601     ; Serial
+                                604800              ; Refresh
+                                86400                 ;Retry
+                                2419200            ; Expire
+                                604800 )            ; Negative Cache TTL
+;
+@          IN          NS             jualbelikapal.c05.com.
+@          IN          A                192.186.2.3      ; IP Skypie
+www        IN          CNAME            jualbelikapal.c05.com. '>/etc/bind/kaizoku/jualbelikapal.c05.com
+```
+Kemudian restart dengan command `service bind9 restart` 
 **Longutown**
 Instalasi beberapa paket pada file script.sh dengan petintah
 ```
@@ -239,6 +264,11 @@ Buat username `luffybelikapalc05` dengan password `luffy_c05` dan username `zoro
 htpasswd -c -m /etc/squid/passwd luffybelikapalc05
 htpasswd -m /etc/squid/passwd zorobelikapalc05
 ```
+**Keterangan:**
+-c : Buat new passwdfile. Jika passwdfile sudah ada maka akan password baru.
+
+-m : Menggunakan enkripsi MD5 untuk password.
+
 Edit file pada `/etc/squid/squid.conf` menjadi:
 ```
 http_port 5000
@@ -251,8 +281,33 @@ auth_param basic casesensitive on
 acl USERS proxy_auth REQUIRED
 http_access allow USERS
 ```
+Lalu restart squid dengan perintah
+```service squid restart```
 **Longuetown**
 
 Kemudian `lynx http://google.com`
 
 ## 10
+**Water7**
+Edit file `/etc/squid/acl.conf` dengan perintah
+```
+echo 'acl JUAL_BELI_KAPAL1 time MTWH 07:00-11:00
+acl JUAL_BELI_KAPAL2 time TWHF 17:00-23:59
+acl JUAL_BELI_KAPAL3 time WHFA 00:00-03:00'>/etc/squid/acl.conf
+```
+Edit file pada `/etc/squid/squid.conf` menjadi:
+```
+echo 'include /etc/squid/acl.conf
+http_port 5000
+visible_hostname jualbelikapal.c05.com
+auth_param basic program /usr/lib/squid/basic_ncsa_auth /etc/squid/passwd
+auth_param basic children 5
+auth_param basic realm Proxy
+auth_param basic credentialsttl 2 hours
+auth_param basic casesensitive on
+http_access deny !JUAL_BELI_KAPAL1 !JUAL_BELI_KAPAL2 !JUAL_BELI_KAPAL3
+acl USERS proxy_auth REQUIRED
+http_access allow USERS
+'>/etc/squid/squid.conf
+```
+Lalu restart squid dengan perintah `service squid restart`
