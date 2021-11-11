@@ -222,7 +222,8 @@ http_access allow all
 ```
 Kemudian restart squid dengan perintah `service squid restart`
 **EinesLobby**
-Buat zone jualbelikapal.c05.com pada '/etc/bind/named.conf.local`
+
+Buat zone jualbelikapal.c05.com pada `/etc/bind/named.conf.local`
 ```
 echo 'zone "jualbelikapal.c05.com" {
         type master;
@@ -230,8 +231,9 @@ echo 'zone "jualbelikapal.c05.com" {
         file "/etc/bind/kaizoku/jualbelikapal.c05.com";
 }; '> /etc/bind/named.conf.local
 ```
-Buat directory kaizoku dengan command 'mkdir /etc/bind/kaizoku'
-Edit file
+Buat directory kaizoku dengan command `mkdir /etc/bind/kaizoku'
+
+Edit file `/etc/bind/kaizoku/jualbelikapal.c05.com` menjadi:
 ```
 echo -e '
 $TTL     604800
