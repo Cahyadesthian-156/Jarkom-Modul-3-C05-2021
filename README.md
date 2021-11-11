@@ -241,6 +241,8 @@ htpasswd -m /etc/squid/passwd zorobelikapalc05
 ```
 Edit file pada `/etc/squid/squid.conf` dengan menambahkan perintah:
 ```
+http_port 5000
+visible_hostname jualbelikapal.c05.com
 auth_param basic program /usr/lib/squid/basic_ncsa_auth /etc/squid/passwd
 auth_param basic children 5
 auth_param basic realm Proxy
@@ -252,4 +254,5 @@ http_access allow USERS
 **Longuetown**
 
 Kemudian `lynx http://google.com`
+
 ##10
