@@ -389,7 +389,69 @@ http_access deny all
 **Pada Loguetown**
 ```Lynx google.com```				
 ```Lynx super.franky.c05```
-<img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/nomer11_4.png" width="800">  
+<img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/nomer11_4.png" width="800">  						
+
+## 12
+**Pada Water7**
+```
+echo '
+#acl	bw_users	src	192.168.3.69/24
+#acl JPGS url_regex -i  \.(jpg|png)$
+acl download url_regex -i .jpg$ .png$
+auth_param basic program /usr/lib/squid/basic_ncsa_auth /etc/squid/passwd
+
+acl luffy proxy_auth luffybelikapalc05
+acl zoro proxy_auth zorobelikapalc05
+
+delay_pools 2
+
+delay_class 1 1
+delay_parameters 1 1250/1250
+delay_access 1 allow luffy
+delay_access 1 deny zoro
+delay_access 1 allow download
+delay_access 1 deny all
+
+delay_class 2 1
+delay_parameters 2 -1/-1
+delay_access 2 allow zoro
+delay_access 2 deny luffy
+delay_access 2 deny all ' >/etc/squid/acl-bandwidth.conf
+```										
+Lalu include kan ```acl-bandwidth.conf``` di  ``` /etc/squid/acl.conf ```			
+
+
+**Pada Loguetown**
+```Lynx google.com``` 											
+masukkan username : ```luffybelikapalc05```												
+password : ```luffy_c05```										
+lalu download image akan menampilkan kecepatan seperti pada gambar dibawah ini				
+<img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/nomer12_1.png" width="800">  
+
+
+## 13
+**Pada  Water7**
+```
+delay_class 2 1
+delay_parameters 2 -1/-1
+delay_access 2 allow zoro
+delay_access 2 deny luffy
+delay_access 2 deny all ' >/etc/squid/acl-bandwidth.conf
+```
+<img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/nomer13_1.png" width="800">								
+Saat akses akan sangat cepat										
+<img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/nomer13_2.png" width="800">										
+
+
+			
+
+
+
+
+
+
+
+
 
 
 
