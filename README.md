@@ -330,3 +330,67 @@ zone "super.franky.C05.com" {
         file "/etc/bind/kaizoku/super.franky.C05.com";
 };
 ```
+
+Bash command.sh yang berisi ```mkdir /etc/bind/kaizoku```
+Bash super-franky-C05.sh yang berisi					
+<img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/nomer11_1.png" width="800">  			
+kemudian jalankan command ```service bind9 restart```
+
+**Pada Skypie**
+```Bash command.sh```																								
+<img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/nomer11_2.png" width="800">  
+```Bash super-franky.sh	```																																
+<img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/nomer11_3.png" width="800">  		
+kemudian						
+```cd /etc/apache2/sites-available```																				
+```a2ensite super.franky.C05.com.conf```																					
+```service apache2 restart```																											
+
+**Pada Water7**
+Bash script3.sh
+```
+echo '
+#nameserver 192.168.122.1
+nameserver 192.186.2.2
+nameserver 192.186.3.69
+' > /etc/resolv.conf
+```
+```
+echo '#include /etc/squid/acl.conf
+include /etc/squid/acl-bandwidth.conf
+
+http_port 5000
+visible_hostname jualbelikapal.c05.com
+
+auth_param basic program /usr/lib/squid/basic_ncsa_auth /etc/squid/passwd
+auth_param basic children 5
+auth_param basic realm Login
+auth_param basic credentialsttl 2 hours
+auth_param basic casesensitive on
+
+#acl lan src 192.168.3.69
+#acl BLACKLISTS dstdomain "/etc/squid/restrict-sites.acl"
+#deny_info http://super.franky.C05.com:5000 lan
+#deny_info  http://super.franky.C05.com:5000 BLACKLISTS
+#http_reply_access deny BLACKLISTS lan
+#http_reply_access deny BLACKLISTS
+acl USERS proxy_auth REQUIRED
+acl google dstdomain google.com
+http_access deny google
+deny_info http://super.franky.C05.com/ google
+http_access allow USERS
+http_access deny all
+
+
+#http_access deny !JUAL_BELI_KAPAL1 !JUAL_BELI_KAPAL2 !JUAL_BELI_KAPAL3
+'>/etc/squid/squid.conf
+```
+
+**Pada Loguetown**
+```Lynx google.com```				
+```Lynx super.franky.c05```
+<img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/nomer11_4.png" width="800">  
+
+
+
+
