@@ -370,6 +370,7 @@ htpasswd -c -m /etc/squid/passwd luffybelikapalc05
 htpasswd -m /etc/squid/passwd zorobelikapalc05
 ```
 <img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/no.9-1.png" width="800">
+
 **Keterangan:**
 
 -c : Buat new passwdfile. Jika passwdfile sudah ada maka akan membuat file password baru.
