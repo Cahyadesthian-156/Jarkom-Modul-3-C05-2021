@@ -423,7 +423,8 @@ Lalu restart squid dengan perintah `service squid restart`
 
 Kemudian `lynx http://google.com` 
 **Keterangan**
-Pada saat jangka waktu yang sudah ditentukan maka bisa mengakses link yang kita tuju. Jika tidak berada dalam jangka waktu yang di inginkan maka tidak akan menampilkan apa apa dan memberikan alert
+Pada saat jangka waktu yang sudah ditentukan maka bisa mengakses link yang kita tuju. Jika tidak berada dalam jangka waktu yang di inginkan maka tidak akan menampilkan apa apa dan memberikan alert seperti berikut:
+<img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/no.10.png" width="800">
 
 ## 11
 **EniesLobby**
