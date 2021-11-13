@@ -493,7 +493,7 @@ http_access deny all
 
 **Pada Loguetown**
 ```Lynx google.com```				
-```Lynx super.franky.c05```
+```Lynx super.franky.c05.com```
 <img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/nomer11_4.png" width="800">  						
 
 ## 12
@@ -548,7 +548,13 @@ Saat akses akan sangat cepat
 <img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/nomer13_2.png" width="800">										
 
 
-			
+.
+
+### Kendala Praktikum:
+-> Pada persoalan no.13 kesulitan untuk menbenarkan kecepatan akses
+-> Pada persoalan no.11 saat melakukan export dan lynx google.com tidak mengarahkan ke super.franky.c05.com
+-> Server sering lost connection sehingga diperlukan untuk merestart web topologinya dan harus mendownload ulang
+-> Jaringan internet waktu mengerjakan praktikum mengalami kendala, sehingga kurang maksimal dalam pengerjaannya		
 
 
 
