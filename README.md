@@ -440,14 +440,14 @@ zone "super.franky.C05.com" {
 
 Bash command.sh yang berisi ```mkdir /etc/bind/kaizoku```
 Bash super-franky-C05.sh yang berisi					
-<img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/nomer11_1.png" width="800">  			
+<img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/no.11_1.png" width="800">  			
 kemudian jalankan command ```service bind9 restart```
 
 **Pada Skypie**
 ```Bash command.sh```																								
-<img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/nomer11_2.png" width="800">  
+<img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/no.11_2.png" width="800">  
 ```Bash super-franky.sh	```																																
-<img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/nomer11_3.png" width="800">  		
+<img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/no.11_3.png" width="800">  		
 kemudian						
 ```cd /etc/apache2/sites-available```																				
 ```a2ensite super.franky.C05.com.conf```																					
@@ -491,7 +491,7 @@ http_access deny all
 
 Ketika ```Lynx google.com``` maka akan mengarah ke super.franky.c05.com
 
-<img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/nomer11_4.png" width="800">  						
+<img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/no.11_4.png" width="800">  						
 
 ## 12
 **Pada Water7**
@@ -526,7 +526,7 @@ Lalu include kan ```acl-bandwidth.conf``` di  ``` /etc/squid/acl.conf ```
 masukkan username : ```luffybelikapalc05``` dan password : ```luffy_c05```										
 
 lalu download image akan menampilkan kecepatan seperti pada gambar dibawah ini				
-<img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/nomer12_1.png" width="800">  
+<img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/no.12_1.png" width="800">  
 
 
 ## 13
@@ -544,9 +544,9 @@ delay_access 2 deny all ' >/etc/squid/acl-bandwidth.conf
 
 Akses `lynx google.com`, akan mengarah pada super.franky.C05.com dan masukkan username `zorobelikapalc05` dengan password `zoro_c05`
 
-<img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/nomer13_1.png" width="800">								
+<img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/no.13_1.png" width="800">								
 Saat akses akan sangat cepat										
-<img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/nomer13_2.png" width="800">										
+<img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/no.13_2.png" width="800">										
 
 
 .
