@@ -529,6 +529,8 @@ lalu download image akan menampilkan kecepatan seperti pada gambar dibawah ini
 
 ## 13
 **Pada  Water7**
+
+Edit file `/etc/squid/acl-bandwidth.conf` lalu tambahkan perintah
 ```
 delay_class 2 1
 delay_parameters 2 -1/-1
