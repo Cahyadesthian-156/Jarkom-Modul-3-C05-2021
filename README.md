@@ -290,7 +290,7 @@ iface eth0 inet dhcp
 **Skypie**
 Edit file `/etc/network/interfaces` dengan menambahkan
 ```
-hwaddress ether 56:c5:59:f7:95:d0; #'hwaddress_milik_Skypie'
+hwaddress ether 56:c5:59:f7:95:d0; #'hwaddress_milik_Skypie' nomer 7
 ```
 Kemudian restart semua client `(Loguetown, Alabasta TottoLand dan Skypie)` pada GNS3
 
@@ -449,19 +449,19 @@ kemudian jalankan command ```service bind9 restart```
 kemudian						
 ```cd /etc/apache2/sites-available```																				
 ```a2ensite super.franky.C05.com.conf```																					
-```service apache2 restart```																											
+ Restart apache2 dengan perintah ```service apache2 restart```																											
 
 **Pada Water7**
-Bash script3.sh
+
+buat script3.sh yaitu dengan menambahkan nameserver dari `EinesLobby dan Skypie` dan kemudian bash script3.sh
 ```
 echo '
-#nameserver 192.168.122.1
 nameserver 192.186.2.2
 nameserver 192.186.3.69
 ' > /etc/resolv.conf
 ```
 ```
-echo '#include /etc/squid/acl.conf
+echo 'include /etc/squid/acl.conf
 include /etc/squid/acl-bandwidth.conf
 
 http_port 5000
@@ -473,12 +473,8 @@ auth_param basic realm Login
 auth_param basic credentialsttl 2 hours
 auth_param basic casesensitive on
 
-#acl lan src 192.168.3.69
-#acl BLACKLISTS dstdomain "/etc/squid/restrict-sites.acl"
-#deny_info http://super.franky.C05.com:5000 lan
-#deny_info  http://super.franky.C05.com:5000 BLACKLISTS
-#http_reply_access deny BLACKLISTS lan
-#http_reply_access deny BLACKLISTS
+http_access deny !JUAL_BELI_KAPAL1 !JUAL_BELI_KAPAL2 !JUAL_BELI_KAPAL3
+
 acl USERS proxy_auth REQUIRED
 acl google dstdomain google.com
 http_access deny google
@@ -486,14 +482,11 @@ deny_info http://super.franky.C05.com/ google
 http_access allow USERS
 http_access deny all
 
-
-#http_access deny !JUAL_BELI_KAPAL1 !JUAL_BELI_KAPAL2 !JUAL_BELI_KAPAL3
 '>/etc/squid/squid.conf
 ```
 
 **Pada Loguetown**
-```Lynx google.com```				
-```Lynx super.franky.c05.com```
+Ketika ```Lynx google.com``` maka akan mengarah ke super.franky.c05.com
 <img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/nomer11_4.png" width="800">  						
 
 ## 12
@@ -506,6 +499,7 @@ acl download url_regex -i .jpg$ .png$
 auth_param basic program /usr/lib/squid/basic_ncsa_auth /etc/squid/passwd
 
 acl luffy proxy_auth luffybelikapalc05
+#nomer 13
 acl zoro proxy_auth zorobelikapalc05
 
 delay_pools 2
@@ -513,20 +507,16 @@ delay_pools 2
 delay_class 1 1
 delay_parameters 1 1250/1250
 delay_access 1 allow luffy
-delay_access 1 deny zoro
+delay_access 1 deny zoro 
 delay_access 1 allow download
 delay_access 1 deny all
-
-delay_class 2 1
-delay_parameters 2 -1/-1
-delay_access 2 allow zoro
-delay_access 2 deny luffy
-delay_access 2 deny all ' >/etc/squid/acl-bandwidth.conf
+' >/etc/squid/acl-bandwidth.conf
 ```										
 Lalu include kan ```acl-bandwidth.conf``` di  ``` /etc/squid/acl.conf ```			
 
 
 **Pada Loguetown**
+
 ```Lynx google.com``` 											
 masukkan username : ```luffybelikapalc05```												
 password : ```luffy_c05```										
@@ -558,7 +548,7 @@ Saat akses akan sangat cepat
 
 -> Server sering lost connection sehingga diperlukan untuk merestart web topologinya dan harus mendownload ulang
 
--> Jaringan internet waktu mengerjakan praktikum mengalami kendala, sehingga kurang maksimal dalam pengerjaannya		
+-> Jaringan internet waktu mengerjakan praktikum mengalami kendala, sehingga kurang maksimal dalam pengerjaannya
 
 
 
