@@ -201,6 +201,7 @@ Pada switch 3
 .
 
 Untuk hasil no 2-6
+
 <img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/no.2-6switch1.png" width="800"> 
 <img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/no.2-6switch3.png" width="800">
 
