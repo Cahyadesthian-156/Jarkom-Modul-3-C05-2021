@@ -55,7 +55,7 @@ iface eth3 inet static
 	netmask 255.255.255.0
 ```
 
-**Longutown**
+**Loguetown**
 ```
 auto eth0
 iface eth0 inet static
@@ -280,7 +280,7 @@ Lalu comment pada bagian `// dnssec-validation auto;` dan tambahkan `allow-query
 
 Setelah itu lakukan restart bind9 dengan perintah `service bind9 restart`
 
-**Longutown, Alabasta TottoLand dan Skypie**
+**Loguetown, Alabasta TottoLand dan Skypie**
 
 Edit file `/etc/network/interfaces` dengan comment atau hapus konfigurasi yang lama (konfigurasi IP statis) dan tambahkan:
 ```
@@ -292,7 +292,7 @@ Edit file `/etc/network/interfaces` dengan menambahkan
 ```
 hwaddress ether 56:c5:59:f7:95:d0; #'hwaddress_milik_Skypie'
 ```
-Kemudian restart semua client `(Longutown, Alabasta TottoLand dan Skypie)` pada GNS3
+Kemudian restart semua client `(Loguetown, Alabasta TottoLand dan Skypie)` pada GNS3
 
 Lalu periksa semua client dengan mengetikkan command `ip a`
 
@@ -345,7 +345,7 @@ $TTL     604800
 www        IN          CNAME            jualbelikapal.c05.com. '>/etc/bind/kaizoku/jualbelikapal.c05.com
 ```
 Kemudian restart dengan command `service bind9 restart` 
-**Longutown**
+**Loguetown**
 Instalasi beberapa paket pada file script.sh dengan petintah
 ```
 apt-get update
@@ -356,13 +356,19 @@ Kemudian aktifkan konfigurasi proxynya dengan perintah
 ```
 export http_proxy="http://192.186.2.3:5000"
 ```
-Kemudian `lynx http://google.com`
+Kemudian `lynx jualbelikapal.c05.com`
+Untuk hasil nya seperti berikut:
+<img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/no.8.png" width="800">
+
+.
+
 ## 9
 Buat username `luffybelikapalc05` dengan password `luffy_c05` dan username `zorobelikapalc05` dengan password `zoro_c05` dengan enkripsi MD5
 ```
 htpasswd -c -m /etc/squid/passwd luffybelikapalc05
 htpasswd -m /etc/squid/passwd zorobelikapalc05
 ```
+<img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/no.9-1.png" width="800">
 **Keterangan:**
 
 -c : Buat new passwdfile. Jika passwdfile sudah ada maka akan membuat file password baru.
@@ -383,9 +389,10 @@ http_access allow USERS
 ```
 Lalu restart squid dengan perintah
 ```service squid restart```
-**Longuetown**
+**Loguetown**
 
-Kemudian `lynx http://google.com`
+Kemudian `lynx http://google.com` maka akan menampilkan seperti berikut:
+<img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/no.9-2.png" width="800">
 
 ## 10
 **Water7**
@@ -412,9 +419,11 @@ http_access allow USERS
 ```
 Lalu restart squid dengan perintah `service squid restart`
 
-**Longuetown**
+**Loguetown**
 
-Kemudian `lynx http://google.com`
+Kemudian `lynx http://google.com` 
+**Keterangan**
+Pada saat jangka waktu yang sudah ditentukan maka bisa mengakses link yang kita tuju. Jika tidak berada dalam jangka waktu yang di inginkan maka tidak akan menampilkan apa apa dan memberikan alert
 
 ## 11
 **EniesLobby**
