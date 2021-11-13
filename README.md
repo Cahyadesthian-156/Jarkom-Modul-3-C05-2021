@@ -486,7 +486,9 @@ http_access deny all
 ```
 
 **Pada Loguetown**
+
 Ketika ```Lynx google.com``` maka akan mengarah ke super.franky.c05.com
+
 <img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/nomer11_4.png" width="800">  						
 
 ## 12
@@ -520,6 +522,7 @@ Lalu include kan ```acl-bandwidth.conf``` di  ``` /etc/squid/acl.conf ```
 ```Lynx google.com``` 											
 masukkan username : ```luffybelikapalc05```												
 password : ```luffy_c05```										
+
 lalu download image akan menampilkan kecepatan seperti pada gambar dibawah ini				
 <img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/nomer12_1.png" width="800">  
 
