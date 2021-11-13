@@ -519,7 +519,7 @@ Lalu include kan ```acl-bandwidth.conf``` di  ``` /etc/squid/acl.conf ```
 
 **Pada Loguetown**
 
-```Lynx google.com``` 											
+```Lynx google.com``` akan mengarah pada super.franky.C05.com											
 masukkan username : ```luffybelikapalc05```												
 password : ```luffy_c05```										
 
@@ -538,6 +538,9 @@ delay_access 2 allow zoro
 delay_access 2 deny luffy
 delay_access 2 deny all ' >/etc/squid/acl-bandwidth.conf
 ```
+**Longutown**
+Akses `lynx google.com`, akan mengarah pada super.franky.C05.com dan masukkan username `zorobelikapalc05` dengan password `zoro_c05`
+
 <img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/nomer13_1.png" width="800">								
 Saat akses akan sangat cepat										
 <img src="https://github.com/Cahyadesthian-156/Jarkom-Modul-3-C05-2021/blob/main/screenshot/nomer13_2.png" width="800">										
